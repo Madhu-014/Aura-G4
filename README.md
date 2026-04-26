@@ -1,12 +1,24 @@
+"When the towers fall, the intelligence must not."
+
 # Aura-G4
+
+![Gemma 4](https://img.shields.io/badge/Gemma-4-0F172A?style=for-the-badge)
+![Offline First](https://img.shields.io/badge/Offline-First-065F46?style=for-the-badge)
+![WHO ETAT Verified](https://img.shields.io/badge/WHO%20ETAT-Verified-1D4ED8?style=for-the-badge)
+![MIT License](https://img.shields.io/badge/License-MIT-374151?style=for-the-badge)
+![Gemma 4 Good Hackathon](https://img.shields.io/badge/Gemma%204%20Good-Hackathon-F59E0B?style=for-the-badge)
 
 Gemma-powered tactical triage assistant for high-pressure emergency scenarios.
 
 Aura-G4 combines local LLM reasoning, protocol-grounded retrieval, and hard safety gating to help responders move from uncertainty to action faster.
 
+![Aura-G4 Dashboard](screenshots/dashboard.png)
+
 ## Why This Matters
 
-In emergency response, delayed or unsafe decisions can cost lives. Aura-G4 is built for the moment when teams need:
+In disasters, connectivity is often the first system to fail, exactly when decision quality matters most. In Turkey (2023), Haiti (2021), and Tohoku (2011), disrupted communications slowed coordination and increased pressure on frontline responders.
+
+Aura-G4 is built for that moment. It keeps mission-critical intelligence local, practical, and safety-constrained when teams need:
 - Fast, structured triage support
 - Protocol-consistent recommendations
 - Reliable behavior under unsafe or off-domain prompts
@@ -23,26 +35,21 @@ This project is designed as a Kaggle Gemma Hackathon submission and showcases:
 ## Key Features
 
 - Gemma reasoning engine
-	- Local inference orchestration via Ollama in [engine/gemma_client.py](engine/gemma_client.py)
-	- Fast/complex model routing and runtime fallback behavior
-
+  - Local inference orchestration via Ollama in [engine/gemma_client.py](engine/gemma_client.py)
+  - Fast/complex model routing and runtime fallback behavior
 - Safety-first guardrails
-	- Mandatory prompt firewall in [engine/firewall.py](engine/firewall.py)
-	- Unsafe or out-of-scope requests are blocked before generation
-
+  - Mandatory prompt firewall in [engine/firewall.py](engine/firewall.py)
+  - Unsafe or out-of-scope requests are blocked before generation
 - Protocol-grounded RAG
-	- PDF ingestion + vector retrieval in [engine/knowledge_base.py](engine/knowledge_base.py)
-	- Response context sourced from emergency manuals
-
+  - PDF ingestion + vector retrieval in [engine/knowledge_base.py](engine/knowledge_base.py)
+  - Response context sourced from emergency manuals
 - Streaming triage experience
-	- SSE streaming endpoint in [backend/main.py](backend/main.py)
-	- Incremental reasoning output and final actionable summary
-
+  - SSE streaming endpoint in [backend/main.py](backend/main.py)
+  - Incremental reasoning output and final actionable summary
 - Vision-assisted field intel
-	- Image + prompt analysis endpoint in [backend/main.py](backend/main.py)
-
+  - Image + prompt analysis endpoint in [backend/main.py](backend/main.py)
 - Live operational telemetry
-	- CPU, RAM, model activity, and throughput metrics from [backend/main.py](backend/main.py)
+  - CPU, RAM, model activity, and throughput metrics from [backend/main.py](backend/main.py)
 
 ## Architecture
 
@@ -65,36 +72,53 @@ Bundled with the repository:
 - [data/triage_manuals/WHO_ETAT_Manual.pdf](data/triage_manuals/WHO_ETAT_Manual.pdf)
 - [data/triage_manuals/Red_Cross_Emergency_Care.pdf](data/triage_manuals/Red_Cross_Emergency_Care.pdf)
 
-## Quick Start (Judge-Friendly)
+## Quick Start (Judge-Friendly, under 5 minutes)
 
 Prerequisites:
 - Python 3.10+
 - Node.js 18+
 - Ollama installed and available in PATH
 - macOS/Linux shell
+- Apple M2 Silicon recommended for MPS acceleration
+- Minimum 16GB RAM
+- 10GB free disk space for model weights
+
+0. Pull Gemma model
+
+```bash
+ollama pull gemma4:e4b
+```
 
 1. Clone
 
-		git clone https://github.com/Madhu-014/Aura-G4.git
-		cd Aura-G4
+```bash
+git clone https://github.com/Madhu-014/Aura-G4.git
+cd Aura-G4
+```
 
 2. Python environment
 
-		python3 -m venv .venv
-		source .venv/bin/activate
-		pip install --upgrade pip
-		pip install -r requirements.txt
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
 
 3. Frontend dependencies
 
-		cd frontend
-		npm install
-		cd ..
+```bash
+cd frontend
+npm install
+cd ..
+```
 
 4. Start full stack
 
-		chmod +x run_aura_stack.sh
-		./run_aura_stack.sh
+```bash
+chmod +x run_aura_stack.sh
+./run_aura_stack.sh
+```
 
 Services:
 - Frontend: http://localhost:3000
@@ -102,19 +126,25 @@ Services:
 
 Health check:
 
-		curl http://127.0.0.1:8000/health
+```bash
+curl http://127.0.0.1:8000/health
+```
 
 ## Manual Run (Optional)
 
 Backend:
 
-		source .venv/bin/activate
-		python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+```bash
+source .venv/bin/activate
+python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+```
 
 Frontend:
 
-		cd frontend
-		npm run dev
+```bash
+cd frontend
+npm run dev
+```
 
 ## API Surface
 
@@ -140,6 +170,14 @@ Implemented in [backend/main.py](backend/main.py):
 - Retrieval grounding is rooted in practical emergency manuals.
 - Streaming UX makes model thinking transparent and operationally useful.
 - Local-first design supports constrained-connectivity environments.
+
+## Impact
+
+Aura-G4 is designed for deployment where traditional AI fails first: low-connectivity, high-stress environments with limited specialist availability.
+
+Potential real-world use cases include district hospitals, field triage tents, ambulance command hubs, and disaster coordination cells. In these settings, faster protocol-grounded decisions can reduce avoidable delays in stabilization and transfer.
+
+Even modest rollout across high-risk regions could influence thousands of triage decisions per week and, over time, contribute to better outcomes for large populations in crisis-prone geographies.
 
 ## Responsible AI Notes
 
@@ -168,3 +206,12 @@ Implemented in [backend/main.py](backend/main.py):
 ## Team Note
 
 Built to demonstrate how Gemma can be applied to real-world, high-stakes public-impact workflows with safety, transparency, and practical deployment in mind.
+
+## Tracks
+
+- Global Resilience
+- Safety and Trust
+- Health and Sciences
+- Ollama Special Prize
+
+When infrastructure breaks, trusted intelligence must still reach the people saving lives.
