@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #050509;
+  --bg-secondary: #0a0a0f;
+  --neon-green: #00ff41;
+  --deep-sea-blue: #0070f3;
+  --warning-orange: #ff8a00;
+  --danger-red: #ff2d2d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at 12% 16%, rgba(0, 112, 243, 0.18), transparent 40%),
+    radial-gradient(circle at 88% 76%, rgba(0, 255, 65, 0.11), transparent 45%),
+    radial-gradient(circle at 50% -12%, rgba(255, 255, 255, 0.08), transparent 38%),
+    linear-gradient(145deg, var(--bg-primary), var(--bg-secondary));
+  color: #f4f8ff;
+  font-family: var(--font-rajdhani), sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: soft-light;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.28) 0.45px, transparent 0.45px);
+  background-size: 3px 3px;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 12%, transparent 0%, transparent 52%, rgba(0, 0, 0, 0.36) 100%);
+}
+
+h1,
+h2,
+h3,
+.tactical-title {
+  font-family: var(--font-orbitron), sans-serif;
+}
+
+.trace-card pre {
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.22);
+}
+
+.clipboard-panel {
+  position: relative;
+}
+
+.emboss-seal {
+  display: inline-flex;
+  border: 1px solid rgba(0, 255, 65, 0.45);
+  border-radius: 9999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #ccffd9;
+  background: linear-gradient(180deg, rgba(0, 255, 65, 0.2), rgba(0, 255, 65, 0.03));
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 0 18px rgba(0, 255, 65, 0.16);
+}
+
+.tactical-override {
+  animation: dangerPulse 1.2s ease-in-out infinite;
+}
+
+::selection {
+  background: rgba(0, 255, 65, 0.25);
+  color: #ffffff;
+}
+
+@keyframes dangerPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 45, 45, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(255, 45, 45, 0);
+  }
+}

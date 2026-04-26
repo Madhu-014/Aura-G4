@@ -1,0 +1,194 @@
+.shell {
+  position: relative;
+  border-radius: 1.05rem;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 0.8rem;
+  min-height: 0;
+  height: 100%;
+}
+
+.shell::before {
+  content: "";
+  position: absolute;
+  left: 0.78rem;
+  right: 0.78rem;
+  top: 0.75rem;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgb(0 255 65 / 0.5), transparent);
+}
+
+.headRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.52rem;
+  flex-wrap: wrap;
+}
+
+.statusTag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid rgb(148 163 184 / 0.35);
+  background: rgb(30 41 59 / 0.52);
+  padding: 0.27rem 0.56rem;
+  color: rgb(203 213 225 / 0.95);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.verifiedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(0 255 65 / 0.45);
+  background: rgb(0 255 65 / 0.14);
+  padding: 0.3rem 0.62rem;
+  color: rgb(187 247 208 / 0.95);
+  font-size: 0.66rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.statBadge,
+.statBadgeRisk {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(148 163 184 / 0.35);
+  background: rgb(15 23 42 / 0.6);
+  padding: 0.28rem 0.56rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.statBadgeRisk {
+  border-color: rgb(255 159 28 / 0.4);
+  color: rgb(254 215 170 / 0.95);
+}
+
+.high {
+  border-color: rgb(0 255 65 / 0.6);
+  color: rgb(0 255 65);
+  background: rgb(0 255 65 / 0.12);
+}
+
+.mid {
+  border-color: rgb(255 209 102 / 0.6);
+  color: rgb(255 209 102);
+  background: rgb(255 209 102 / 0.12);
+}
+
+.low {
+  border-color: rgb(255 159 28 / 0.6);
+  color: rgb(255 159 28);
+  background: rgb(255 159 28 / 0.12);
+}
+
+.board {
+  position: relative;
+  border-radius: 0.9rem;
+  border: 1px solid rgb(148 163 184 / 0.22);
+  background: linear-gradient(160deg, rgb(2 6 23 / 0.86), rgb(15 23 42 / 0.58));
+  padding: 1.08rem 1.05rem 2.85rem;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.board::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.05), transparent 26%);
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  color: rgb(186 230 253 / 0.9);
+}
+
+.subLabel {
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(148 163 184 / 0.92);
+}
+
+.body {
+  color: rgb(226 232 240 / 0.95);
+  line-height: 1.65;
+  font-size: 0.92rem;
+  white-space: pre-wrap;
+  overflow: auto;
+  padding-right: 0.18rem;
+}
+
+.bodyMuted {
+  color: rgb(148 163 184 / 0.95);
+  font-style: italic;
+}
+
+.seal {
+  position: absolute;
+  right: 0.72rem;
+  bottom: 0.68rem;
+  border: 2px solid rgb(0 255 65 / 0.82);
+  border-radius: 4px;
+  padding: 0.23rem 0.52rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: rgb(0 255 65 / 0.95);
+  background: rgb(0 255 65 / 0.12);
+  transform: rotate(-5deg);
+  box-shadow: 0 0 16px rgb(0 255 65 / 0.2), inset 0 0 0 1px rgb(0 255 65 / 0.35);
+}
+
+.board::-webkit-scrollbar,
+.body::-webkit-scrollbar {
+  width: 7px;
+}
+
+.board::-webkit-scrollbar-thumb,
+.body::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgb(0 112 243 / 0.7), rgb(0 255 65 / 0.7));
+}
+
+.board::-webkit-scrollbar-track,
+.body::-webkit-scrollbar-track {
+  border-radius: 9999px;
+  background: rgb(15 23 42 / 0.25);
+}

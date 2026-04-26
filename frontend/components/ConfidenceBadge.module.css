@@ -1,0 +1,50 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 9999px;
+  padding: 0.32rem 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 0.61rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.badge svg {
+  animation: badgePulse 1.9s ease-in-out infinite;
+}
+
+.high {
+  color: #00ff41;
+  border-color: rgb(0 255 65 / 0.55);
+  background: rgb(0 255 65 / 0.14);
+  box-shadow: 0 0 14px rgb(0 255 65 / 0.15);
+}
+
+.mid {
+  color: #ffd166;
+  border-color: rgb(255 209 102 / 0.55);
+  background: rgb(255 209 102 / 0.15);
+  box-shadow: 0 0 14px rgb(255 209 102 / 0.13);
+}
+
+.low {
+  color: #ff9f1c;
+  border-color: rgb(255 159 28 / 0.55);
+  background: rgb(255 159 28 / 0.15);
+  box-shadow: 0 0 14px rgb(255 159 28 / 0.13);
+}
+
+@keyframes badgePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}

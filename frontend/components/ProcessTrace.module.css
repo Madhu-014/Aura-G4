@@ -1,0 +1,114 @@
+.shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0.78rem;
+  min-height: 0;
+  height: 100%;
+}
+
+.headRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: rgb(186 230 253 / 0.95);
+  font-weight: 700;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.34rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(148 163 184 / 0.35);
+  background: rgb(15 23 42 / 0.52);
+  padding: 0.24rem 0.52rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(203 213 225 / 0.95);
+  font-weight: 700;
+}
+
+.dot {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 9999px;
+}
+
+.dotActive {
+  background: #0070f3;
+  box-shadow: 0 0 12px rgb(0 112 243 / 0.7);
+}
+
+.dotStandby {
+  background: #00ff41;
+  box-shadow: 0 0 10px rgb(0 255 65 / 0.6);
+}
+
+.traceViewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgb(148 163 184 / 0.22);
+  background: linear-gradient(170deg, rgb(2 6 23 / 0.82), rgb(15 23 42 / 0.5));
+  min-height: 0;
+  display: flex;
+}
+
+.traceViewport::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.06), transparent 22%);
+}
+
+.beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: linear-gradient(180deg, transparent, rgb(0 112 243 / 0.32), transparent);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.pre {
+  min-height: 0;
+  height: 100%;
+  max-height: none;
+  flex: 1;
+  overflow: auto;
+  margin: 0;
+  padding: 1rem;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+  color: rgb(170 219 255 / 0.96);
+}
+
+.pre::-webkit-scrollbar {
+  width: 7px;
+}
+
+.pre::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgb(0 112 243 / 0.75), rgb(0 255 65 / 0.7));
+}
+
+.pre::-webkit-scrollbar-track {
+  border-radius: 9999px;
+  background: rgb(15 23 42 / 0.25);
+}
